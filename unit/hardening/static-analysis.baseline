@@ -1,0 +1,1147 @@
+# Triaged findings of unit/hardening/static-analysis, without line numbers.
+# Each finding is followed by the reason it is accepted. Generated with
+# GCC 15, Clang 21, cppcheck 2.19, flawfinder 2.0.19, sparse 0.6.4 on
+# armv7, aarch64 and x86-64; other tool versions may report more or less.
+
+aarch64-clang: src/binder_call_barring.c: implicit conversion from enumeration type 'enum radio_network_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_call_barring.c: implicit conversion from enumeration type 'enum radio_sim_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_call_forwarding.c: implicit conversion from enumeration type 'enum radio_voice_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_call_settings.c: implicit conversion from enumeration type 'enum radio_voice_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_call_volume.c: implicit conversion from enumeration type 'enum radio_voice_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_cbs.c: cast from 'gchar *' (aka 'char *') to 'BinderCbsRange *' (aka 'struct binder_cbs_range *') increases required alignment from 1 to 4 [-Wcast-align]
+  why: GArray data, malloc aligned
+aarch64-clang: src/binder_cbs.c: implicit conversion from enumeration type 'enum radio_messaging_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_cbs.c: implicit conversion from enumeration type 'enum radio_messaging_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_cell_info.c: cast from 'guint8 *' (aka 'unsigned char *') to 'BinderCellInfo *' (aka 'struct binder_cell_info *') increases required alignment from 1 to 8 [-Wcast-align]
+  why: G_CAST/THIS container-of casts on real objects (gutil_macros.h); only armv7 and clang warn
+aarch64-clang: src/binder_cell_info.c: format string is not a string literal [-Wformat-nonliteral]
+  why: binder_cell_info_int*_format(): every caller passes a literal format
+aarch64-clang: src/binder_cell_info.c: implicit conversion from enumeration type 'enum radio_network_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_cell_info.c: implicit conversion from enumeration type 'enum radio_network_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_connman.c: cast from 'guint8 *' (aka 'unsigned char *') to 'ConnManObject *' (aka 'struct connman_object *') increases required alignment from 1 to 8 [-Wcast-align]
+  why: G_CAST/THIS container-of casts on real objects (gutil_macros.h); only armv7 and clang warn
+aarch64-clang: src/binder_data.c: cast from 'guint8 *' (aka 'unsigned char *') to 'BinderDataObject *' (aka 'struct binder_data_object *') increases required alignment from 1 to 8 [-Wcast-align]
+  why: G_CAST/THIS container-of casts on real objects (gutil_macros.h); only armv7 and clang warn
+aarch64-clang: src/binder_data.c: cast from 'guint8 *' (aka 'unsigned char *') to 'BinderDataRequestAllowData *' (aka 'struct binder_data_request_allow_data *') increases required alignment from 1 to 8 [-Wcast-align]
+  why: G_CAST/THIS container-of casts on real objects (gutil_macros.h); only armv7 and clang warn
+aarch64-clang: src/binder_data.c: cast from 'guint8 *' (aka 'unsigned char *') to 'BinderDataRequestDeact *' (aka 'struct binder_data_request_deact *') increases required alignment from 1 to 8 [-Wcast-align]
+  why: G_CAST/THIS container-of casts on real objects (gutil_macros.h); only armv7 and clang warn
+aarch64-clang: src/binder_data.c: cast from 'guint8 *' (aka 'unsigned char *') to 'BinderDataRequestSetup *' (aka 'struct binder_data_request_setup *') increases required alignment from 1 to 8 [-Wcast-align]
+  why: G_CAST/THIS container-of casts on real objects (gutil_macros.h); only armv7 and clang warn
+aarch64-clang: src/binder_data.c: implicit conversion from enumeration type 'const RADIO_PDP_PROTOCOL_TYPE' (aka 'const enum radio_pdp_protocol_type') to different enumeration type 'enum ofono_gprs_proto' [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_data.c: implicit conversion from enumeration type 'enum radio_aidl_config_req' to different enumeration type 'RADIO_CONFIG_REQ' (aka 'enum radio_config_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_data.c: implicit conversion from enumeration type 'enum radio_data_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_data.c: implicit conversion from enumeration type 'enum radio_data_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_data.c: implicit conversion from enumeration type 'enum radio_network_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_devinfo.c: implicit conversion from enumeration type 'enum radio_modem_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_devmon_combine.c: cast from 'guint8 *' (aka 'unsigned char *') to 'DevMon *' (aka 'struct binder_devmon_combine *') increases required alignment from 1 to 8 [-Wcast-align]
+  why: G_CAST/THIS container-of casts on real objects (gutil_macros.h); only armv7 and clang warn
+aarch64-clang: src/binder_devmon_combine.c: cast from 'guint8 *' (aka 'unsigned char *') to 'DevMonIo *' (aka 'struct binder_devmon_combine_io *') increases required alignment from 1 to 8 [-Wcast-align]
+  why: G_CAST/THIS container-of casts on real objects (gutil_macros.h); only armv7 and clang warn
+aarch64-clang: src/binder_devmon_ds.c: cast from 'guint8 *' (aka 'unsigned char *') to 'DevMon *' (aka 'struct binder_devmon_ds *') increases required alignment from 1 to 8 [-Wcast-align]
+  why: G_CAST/THIS container-of casts on real objects (gutil_macros.h); only armv7 and clang warn
+aarch64-clang: src/binder_devmon_ds.c: cast from 'guint8 *' (aka 'unsigned char *') to 'DevMonIo *' (aka 'struct binder_devmon_ds_io *') increases required alignment from 1 to 8 [-Wcast-align]
+  why: G_CAST/THIS container-of casts on real objects (gutil_macros.h); only armv7 and clang warn
+aarch64-clang: src/binder_devmon_ds.c: implicit conversion from enumeration type 'enum radio_modem_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_devmon_if.c: cast from 'guint8 *' (aka 'unsigned char *') to 'DevMon *' (aka 'struct binder_devmon_if *') increases required alignment from 1 to 8 [-Wcast-align]
+  why: G_CAST/THIS container-of casts on real objects (gutil_macros.h); only armv7 and clang warn
+aarch64-clang: src/binder_devmon_if.c: cast from 'guint8 *' (aka 'unsigned char *') to 'DevMonIo *' (aka 'struct binder_devmon_if_io *') increases required alignment from 1 to 8 [-Wcast-align]
+  why: G_CAST/THIS container-of casts on real objects (gutil_macros.h); only armv7 and clang warn
+aarch64-clang: src/binder_devmon_if.c: implicit conversion from enumeration type 'enum radio_network_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_ims_reg.c: cast from 'guint8 *' (aka 'unsigned char *') to 'BinderImsRegObject *' (aka 'struct binder_ims_reg_object *') increases required alignment from 1 to 8 [-Wcast-align]
+  why: G_CAST/THIS container-of casts on real objects (gutil_macros.h); only armv7 and clang warn
+aarch64-clang: src/binder_ims_reg.c: implicit conversion from enumeration type 'enum radio_network_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_ims_reg.c: implicit conversion from enumeration type 'enum radio_network_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_logger.c: implicit conversion from enumeration type 'enum radio_ind' to different enumeration type 'RADIO_CONFIG_IND' (aka 'enum radio_config_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_logger.c: implicit conversion from enumeration type 'enum radio_req' to different enumeration type 'RADIO_CONFIG_REQ' (aka 'enum radio_config_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_logger.c: implicit conversion from enumeration type 'enum radio_resp' to different enumeration type 'RADIO_CONFIG_RESP' (aka 'enum radio_config_resp') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_logger.c: implicit conversion from enumeration type 'RADIO_CONFIG_IND' (aka 'enum radio_config_ind') to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_modem.c: cast from 'guint8 *' (aka 'unsigned char *') to 'BinderModemPriv *' (aka 'struct binder_modem_priv *') increases required alignment from 1 to 8 [-Wcast-align]
+  why: G_CAST/THIS container-of casts on real objects (gutil_macros.h); only armv7 and clang warn
+aarch64-clang: src/binder_modem.c: implicit conversion from enumeration type 'enum radio_network_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_netreg.c: implicit conversion from enumeration type 'enum ofono_operator_status' to different enumeration type 'RADIO_OP_STATUS' (aka 'enum radio_operator_status') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_netreg.c: implicit conversion from enumeration type 'enum radio_modem_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_netreg.c: implicit conversion from enumeration type 'enum radio_network_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_netreg.c: implicit conversion from enumeration type 'enum radio_network_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_network.c: cast from 'char *' to 'BinderNetworkDataProfile *' (aka 'struct binder_network_data_profile *') increases required alignment from 1 to 8 [-Wcast-align]
+  why: g_malloc() block laid out with G_ALIGN8
+aarch64-clang: src/binder_network.c: cast from 'guint8 *' (aka 'unsigned char *') to 'BinderNetworkObject *' (aka 'struct binder_network_object *') increases required alignment from 1 to 8 [-Wcast-align]
+  why: G_CAST/THIS container-of casts on real objects (gutil_macros.h); only armv7 and clang warn
+aarch64-clang: src/binder_network.c: implicit conversion from enumeration type 'enum radio_data_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_network.c: implicit conversion from enumeration type 'enum radio_modem_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_network.c: implicit conversion from enumeration type 'enum radio_network_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_network.c: implicit conversion from enumeration type 'enum radio_network_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_network.c: implicit conversion from enumeration type 'enum radio_pref_net_type_internal' to different enumeration type 'RADIO_PREF_NET_TYPE' (aka 'enum radio_pref_net_type') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_plugin.c: implicit conversion from enumeration type 'enum radio_modem_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_plugin.c: implicit conversion from enumeration type 'enum radio_modem_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_radio_caps.c: cast from 'guint8 *' (aka 'unsigned char *') to 'BinderRadioCapsObject *' (aka 'struct binder_radio_caps_object *') increases required alignment from 1 to 8 [-Wcast-align]
+  why: G_CAST/THIS container-of casts on real objects (gutil_macros.h); only armv7 and clang warn
+aarch64-clang: src/binder_radio_caps.c: implicit conversion from enumeration type 'enum radio_modem_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_radio_caps.c: implicit conversion from enumeration type 'enum radio_modem_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_radio.c: cast from 'guint8 *' (aka 'unsigned char *') to 'BinderRadioObject *' (aka 'struct binder_radio_object *') increases required alignment from 1 to 8 [-Wcast-align]
+  why: G_CAST/THIS container-of casts on real objects (gutil_macros.h); only armv7 and clang warn
+aarch64-clang: src/binder_radio.c: implicit conversion from enumeration type 'enum radio_modem_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_radio.c: implicit conversion from enumeration type 'enum radio_modem_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_sim_card.c: implicit conversion from enumeration type 'enum radio_sim_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_sim_card.c: implicit conversion from enumeration type 'enum radio_sim_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_sim.c: cast from 'const guint8 *' (aka 'const unsigned char *') to 'RADIO_REQ *' (aka 'enum radio_req *') increases required alignment from 1 to 4 [-Wcast-align]
+  why: offsetof() into a struct of RADIO_REQ fields, so aligned
+aarch64-clang: src/binder_sim.c: implicit conversion from enumeration type 'enum radio_network_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_sim.c: implicit conversion from enumeration type 'enum radio_sim_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_sim.c: implicit conversion from enumeration type 'enum radio_sim_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_sim_settings.c: cast from 'guint8 *' (aka 'unsigned char *') to 'BinderSimSettingsObject *' (aka 'struct binder_sim_settings_object *') increases required alignment from 1 to 8 [-Wcast-align]
+  why: G_CAST/THIS container-of casts on real objects (gutil_macros.h); only armv7 and clang warn
+aarch64-clang: src/binder_sms.c: implicit conversion from enumeration type 'enum radio_messaging_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_sms.c: implicit conversion from enumeration type 'enum radio_messaging_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_stk.c: implicit conversion from enumeration type 'enum radio_sim_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_stk.c: implicit conversion from enumeration type 'enum radio_sim_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_stk.c: implicit conversion from enumeration type 'enum radio_voice_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_ussd.c: implicit conversion from enumeration type 'enum radio_voice_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_ussd.c: implicit conversion from enumeration type 'enum radio_voice_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_util.c: implicit conversion from enumeration type 'enum radio_pref_net_type_internal' to different enumeration type 'RADIO_PREF_NET_TYPE' (aka 'enum radio_pref_net_type') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_voicecall.c: implicit conversion from enumeration type 'const RADIO_CALL_STATE' (aka 'const enum radio_call_state') to different enumeration type 'enum ofono_call_status' [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_voicecall.c: implicit conversion from enumeration type 'enum radio_network_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_voicecall.c: implicit conversion from enumeration type 'enum radio_network_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_voicecall.c: implicit conversion from enumeration type 'enum radio_voice_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-clang: src/binder_voicecall.c: implicit conversion from enumeration type 'enum radio_voice_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_call_barring.c: implicit conversion from 'enum radio_network_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_call_barring.c: implicit conversion from 'enum radio_sim_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_call_forwarding.c: implicit conversion from 'enum radio_voice_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_call_settings.c: implicit conversion from 'enum radio_voice_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_call_volume.c: implicit conversion from 'enum radio_voice_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_cbs.c: implicit conversion from 'enum radio_messaging_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_cbs.c: implicit conversion from 'enum radio_messaging_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_cell_info.c: format not a string literal, argument types not checked [-Wformat-nonliteral]
+  why: binder_cell_info_int*_format(): every caller passes a literal format
+aarch64-gcc: src/binder_cell_info.c: implicit conversion from 'enum radio_network_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_cell_info.c: implicit conversion from 'enum radio_network_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_data.c: implicit conversion from 'enum radio_aidl_config_req' to 'enum radio_config_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_data.c: implicit conversion from 'enum radio_data_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_data.c: implicit conversion from 'enum radio_data_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_data.c: implicit conversion from 'enum radio_network_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_data.c: implicit conversion from 'RADIO_PDP_PROTOCOL_TYPE' {aka 'enum radio_pdp_protocol_type'} to 'enum ofono_gprs_proto' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_devinfo.c: implicit conversion from 'enum radio_modem_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_devmon_ds.c: implicit conversion from 'enum radio_modem_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_devmon_if.c: implicit conversion from 'enum radio_network_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_ims_reg.c: implicit conversion from 'enum radio_network_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_ims_reg.c: implicit conversion from 'enum radio_network_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_logger.c: implicit conversion from 'enum radio_ind' to 'RADIO_CONFIG_IND' {aka 'enum radio_config_ind'} [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_logger.c: implicit conversion from 'enum radio_req' to 'RADIO_CONFIG_REQ' {aka 'enum radio_config_req'} [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_logger.c: implicit conversion from 'enum radio_resp' to 'RADIO_CONFIG_RESP' {aka 'enum radio_config_resp'} [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_logger.c: implicit conversion from 'RADIO_CONFIG_IND' {aka 'enum radio_config_ind'} to 'RADIO_IND' {aka 'enum radio_ind'} [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_netreg.c: implicit conversion from 'enum ofono_operator_status' to 'RADIO_OP_STATUS' {aka 'enum radio_operator_status'} [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_netreg.c: implicit conversion from 'enum radio_modem_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_netreg.c: implicit conversion from 'enum radio_network_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_netreg.c: implicit conversion from 'enum radio_network_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_network.c: implicit conversion from 'enum radio_data_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_network.c: implicit conversion from 'enum radio_modem_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_network.c: implicit conversion from 'enum radio_network_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_network.c: implicit conversion from 'enum radio_network_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_network.c: implicit conversion from 'enum radio_pref_net_type_internal' to 'RADIO_PREF_NET_TYPE' {aka 'enum radio_pref_net_type'} [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_plugin.c: implicit conversion from 'enum radio_modem_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_plugin.c: implicit conversion from 'enum radio_modem_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_radio_caps.c: implicit conversion from 'enum radio_modem_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_radio_caps.c: implicit conversion from 'enum radio_modem_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_radio.c: implicit conversion from 'enum radio_modem_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_radio.c: implicit conversion from 'enum radio_modem_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_sim_card.c: implicit conversion from 'enum radio_sim_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_sim_card.c: implicit conversion from 'enum radio_sim_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_sim.c: implicit conversion from 'enum radio_network_req' to 'RADIO_REQ' {aka 'enum radio_req'} [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_sim.c: implicit conversion from 'enum radio_sim_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_sim.c: implicit conversion from 'enum radio_sim_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_sms.c: implicit conversion from 'enum radio_messaging_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_sms.c: implicit conversion from 'enum radio_messaging_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_stk.c: implicit conversion from 'enum radio_sim_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_stk.c: implicit conversion from 'enum radio_sim_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_stk.c: implicit conversion from 'enum radio_voice_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_ussd.c: implicit conversion from 'enum radio_voice_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_ussd.c: implicit conversion from 'enum radio_voice_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_util.c: implicit conversion from 'enum radio_pref_net_type_internal' to 'RADIO_PREF_NET_TYPE' {aka 'enum radio_pref_net_type'} [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_voicecall.c: implicit conversion from 'enum radio_network_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_voicecall.c: implicit conversion from 'enum radio_network_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_voicecall.c: implicit conversion from 'enum radio_voice_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_voicecall.c: implicit conversion from 'enum radio_voice_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+aarch64-gcc: src/binder_voicecall.c: implicit conversion from 'RADIO_CALL_STATE' {aka 'enum radio_call_state'} to 'enum ofono_call_status' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_call_barring.c: implicit conversion from enumeration type 'enum radio_network_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_call_barring.c: implicit conversion from enumeration type 'enum radio_sim_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_call_forwarding.c: implicit conversion from enumeration type 'enum radio_voice_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_call_settings.c: implicit conversion from enumeration type 'enum radio_voice_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_call_volume.c: implicit conversion from enumeration type 'enum radio_voice_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_cbs.c: cast from 'gchar *' (aka 'char *') to 'BinderCbsRange *' (aka 'struct binder_cbs_range *') increases required alignment from 1 to 4 [-Wcast-align]
+  why: GArray data, malloc aligned
+armv7-clang: src/binder_cbs.c: implicit conversion from enumeration type 'enum radio_messaging_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_cbs.c: implicit conversion from enumeration type 'enum radio_messaging_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_cell_info.c: cast from 'guint8 *' (aka 'unsigned char *') to 'BinderCellInfo *' (aka 'struct binder_cell_info *') increases required alignment from 1 to 4 [-Wcast-align]
+  why: G_CAST/THIS container-of casts on real objects (gutil_macros.h); only armv7 and clang warn
+armv7-clang: src/binder_cell_info.c: format string is not a string literal [-Wformat-nonliteral]
+  why: binder_cell_info_int*_format(): every caller passes a literal format
+armv7-clang: src/binder_cell_info.c: implicit conversion from enumeration type 'enum radio_network_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_cell_info.c: implicit conversion from enumeration type 'enum radio_network_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_connman.c: cast from 'guint8 *' (aka 'unsigned char *') to 'ConnManObject *' (aka 'struct connman_object *') increases required alignment from 1 to 4 [-Wcast-align]
+  why: G_CAST/THIS container-of casts on real objects (gutil_macros.h); only armv7 and clang warn
+armv7-clang: src/binder_data.c: cast from 'guint8 *' (aka 'unsigned char *') to 'BinderDataObject *' (aka 'struct binder_data_object *') increases required alignment from 1 to 4 [-Wcast-align]
+  why: G_CAST/THIS container-of casts on real objects (gutil_macros.h); only armv7 and clang warn
+armv7-clang: src/binder_data.c: cast from 'guint8 *' (aka 'unsigned char *') to 'BinderDataRequestAllowData *' (aka 'struct binder_data_request_allow_data *') increases required alignment from 1 to 4 [-Wcast-align]
+  why: G_CAST/THIS container-of casts on real objects (gutil_macros.h); only armv7 and clang warn
+armv7-clang: src/binder_data.c: cast from 'guint8 *' (aka 'unsigned char *') to 'BinderDataRequestDeact *' (aka 'struct binder_data_request_deact *') increases required alignment from 1 to 4 [-Wcast-align]
+  why: G_CAST/THIS container-of casts on real objects (gutil_macros.h); only armv7 and clang warn
+armv7-clang: src/binder_data.c: cast from 'guint8 *' (aka 'unsigned char *') to 'BinderDataRequestSetup *' (aka 'struct binder_data_request_setup *') increases required alignment from 1 to 4 [-Wcast-align]
+  why: G_CAST/THIS container-of casts on real objects (gutil_macros.h); only armv7 and clang warn
+armv7-clang: src/binder_data.c: implicit conversion from enumeration type 'const RADIO_PDP_PROTOCOL_TYPE' (aka 'const enum radio_pdp_protocol_type') to different enumeration type 'enum ofono_gprs_proto' [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_data.c: implicit conversion from enumeration type 'enum radio_aidl_config_req' to different enumeration type 'RADIO_CONFIG_REQ' (aka 'enum radio_config_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_data.c: implicit conversion from enumeration type 'enum radio_data_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_data.c: implicit conversion from enumeration type 'enum radio_data_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_data.c: implicit conversion from enumeration type 'enum radio_network_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_devinfo.c: implicit conversion from enumeration type 'enum radio_modem_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_devmon_combine.c: cast from 'guint8 *' (aka 'unsigned char *') to 'DevMon *' (aka 'struct binder_devmon_combine *') increases required alignment from 1 to 4 [-Wcast-align]
+  why: G_CAST/THIS container-of casts on real objects (gutil_macros.h); only armv7 and clang warn
+armv7-clang: src/binder_devmon_combine.c: cast from 'guint8 *' (aka 'unsigned char *') to 'DevMonIo *' (aka 'struct binder_devmon_combine_io *') increases required alignment from 1 to 4 [-Wcast-align]
+  why: G_CAST/THIS container-of casts on real objects (gutil_macros.h); only armv7 and clang warn
+armv7-clang: src/binder_devmon_ds.c: cast from 'guint8 *' (aka 'unsigned char *') to 'DevMon *' (aka 'struct binder_devmon_ds *') increases required alignment from 1 to 4 [-Wcast-align]
+  why: G_CAST/THIS container-of casts on real objects (gutil_macros.h); only armv7 and clang warn
+armv7-clang: src/binder_devmon_ds.c: cast from 'guint8 *' (aka 'unsigned char *') to 'DevMonIo *' (aka 'struct binder_devmon_ds_io *') increases required alignment from 1 to 4 [-Wcast-align]
+  why: G_CAST/THIS container-of casts on real objects (gutil_macros.h); only armv7 and clang warn
+armv7-clang: src/binder_devmon_ds.c: implicit conversion from enumeration type 'enum radio_modem_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_devmon_if.c: cast from 'guint8 *' (aka 'unsigned char *') to 'DevMon *' (aka 'struct binder_devmon_if *') increases required alignment from 1 to 4 [-Wcast-align]
+  why: G_CAST/THIS container-of casts on real objects (gutil_macros.h); only armv7 and clang warn
+armv7-clang: src/binder_devmon_if.c: cast from 'guint8 *' (aka 'unsigned char *') to 'DevMonIo *' (aka 'struct binder_devmon_if_io *') increases required alignment from 1 to 4 [-Wcast-align]
+  why: G_CAST/THIS container-of casts on real objects (gutil_macros.h); only armv7 and clang warn
+armv7-clang: src/binder_devmon_if.c: implicit conversion from enumeration type 'enum radio_network_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_ims_reg.c: cast from 'guint8 *' (aka 'unsigned char *') to 'BinderImsRegObject *' (aka 'struct binder_ims_reg_object *') increases required alignment from 1 to 4 [-Wcast-align]
+  why: G_CAST/THIS container-of casts on real objects (gutil_macros.h); only armv7 and clang warn
+armv7-clang: src/binder_ims_reg.c: implicit conversion from enumeration type 'enum radio_network_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_ims_reg.c: implicit conversion from enumeration type 'enum radio_network_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_logger.c: implicit conversion from enumeration type 'enum radio_ind' to different enumeration type 'RADIO_CONFIG_IND' (aka 'enum radio_config_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_logger.c: implicit conversion from enumeration type 'enum radio_req' to different enumeration type 'RADIO_CONFIG_REQ' (aka 'enum radio_config_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_logger.c: implicit conversion from enumeration type 'enum radio_resp' to different enumeration type 'RADIO_CONFIG_RESP' (aka 'enum radio_config_resp') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_logger.c: implicit conversion from enumeration type 'RADIO_CONFIG_IND' (aka 'enum radio_config_ind') to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_modem.c: cast from 'guint8 *' (aka 'unsigned char *') to 'BinderModemPriv *' (aka 'struct binder_modem_priv *') increases required alignment from 1 to 4 [-Wcast-align]
+  why: G_CAST/THIS container-of casts on real objects (gutil_macros.h); only armv7 and clang warn
+armv7-clang: src/binder_modem.c: implicit conversion from enumeration type 'enum radio_network_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_netreg.c: implicit conversion from enumeration type 'enum ofono_operator_status' to different enumeration type 'RADIO_OP_STATUS' (aka 'enum radio_operator_status') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_netreg.c: implicit conversion from enumeration type 'enum radio_modem_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_netreg.c: implicit conversion from enumeration type 'enum radio_network_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_netreg.c: implicit conversion from enumeration type 'enum radio_network_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_network.c: cast from 'char *' to 'BinderNetworkDataProfile *' (aka 'struct binder_network_data_profile *') increases required alignment from 1 to 4 [-Wcast-align]
+  why: g_malloc() block laid out with G_ALIGN8
+armv7-clang: src/binder_network.c: cast from 'guint8 *' (aka 'unsigned char *') to 'BinderNetworkObject *' (aka 'struct binder_network_object *') increases required alignment from 1 to 4 [-Wcast-align]
+  why: G_CAST/THIS container-of casts on real objects (gutil_macros.h); only armv7 and clang warn
+armv7-clang: src/binder_network.c: implicit conversion from enumeration type 'enum radio_data_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_network.c: implicit conversion from enumeration type 'enum radio_modem_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_network.c: implicit conversion from enumeration type 'enum radio_network_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_network.c: implicit conversion from enumeration type 'enum radio_network_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_network.c: implicit conversion from enumeration type 'enum radio_pref_net_type_internal' to different enumeration type 'RADIO_PREF_NET_TYPE' (aka 'enum radio_pref_net_type') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_plugin.c: implicit conversion from enumeration type 'enum radio_modem_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_plugin.c: implicit conversion from enumeration type 'enum radio_modem_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_radio_caps.c: cast from 'guint8 *' (aka 'unsigned char *') to 'BinderRadioCapsObject *' (aka 'struct binder_radio_caps_object *') increases required alignment from 1 to 4 [-Wcast-align]
+  why: G_CAST/THIS container-of casts on real objects (gutil_macros.h); only armv7 and clang warn
+armv7-clang: src/binder_radio_caps.c: implicit conversion from enumeration type 'enum radio_modem_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_radio_caps.c: implicit conversion from enumeration type 'enum radio_modem_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_radio.c: cast from 'guint8 *' (aka 'unsigned char *') to 'BinderRadioObject *' (aka 'struct binder_radio_object *') increases required alignment from 1 to 4 [-Wcast-align]
+  why: G_CAST/THIS container-of casts on real objects (gutil_macros.h); only armv7 and clang warn
+armv7-clang: src/binder_radio.c: implicit conversion from enumeration type 'enum radio_modem_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_radio.c: implicit conversion from enumeration type 'enum radio_modem_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_sim_card.c: implicit conversion from enumeration type 'enum radio_sim_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_sim_card.c: implicit conversion from enumeration type 'enum radio_sim_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_sim.c: cast from 'const guint8 *' (aka 'const unsigned char *') to 'RADIO_REQ *' (aka 'enum radio_req *') increases required alignment from 1 to 4 [-Wcast-align]
+  why: offsetof() into a struct of RADIO_REQ fields, so aligned
+armv7-clang: src/binder_sim.c: implicit conversion from enumeration type 'enum radio_network_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_sim.c: implicit conversion from enumeration type 'enum radio_sim_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_sim.c: implicit conversion from enumeration type 'enum radio_sim_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_sim_settings.c: cast from 'guint8 *' (aka 'unsigned char *') to 'BinderSimSettingsObject *' (aka 'struct binder_sim_settings_object *') increases required alignment from 1 to 4 [-Wcast-align]
+  why: G_CAST/THIS container-of casts on real objects (gutil_macros.h); only armv7 and clang warn
+armv7-clang: src/binder_sms.c: implicit conversion from enumeration type 'enum radio_messaging_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_sms.c: implicit conversion from enumeration type 'enum radio_messaging_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_stk.c: implicit conversion from enumeration type 'enum radio_sim_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_stk.c: implicit conversion from enumeration type 'enum radio_sim_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_stk.c: implicit conversion from enumeration type 'enum radio_voice_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_ussd.c: implicit conversion from enumeration type 'enum radio_voice_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_ussd.c: implicit conversion from enumeration type 'enum radio_voice_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_util.c: implicit conversion from enumeration type 'enum radio_pref_net_type_internal' to different enumeration type 'RADIO_PREF_NET_TYPE' (aka 'enum radio_pref_net_type') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_voicecall.c: implicit conversion from enumeration type 'const RADIO_CALL_STATE' (aka 'const enum radio_call_state') to different enumeration type 'enum ofono_call_status' [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_voicecall.c: implicit conversion from enumeration type 'enum radio_network_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_voicecall.c: implicit conversion from enumeration type 'enum radio_network_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_voicecall.c: implicit conversion from enumeration type 'enum radio_voice_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-clang: src/binder_voicecall.c: implicit conversion from enumeration type 'enum radio_voice_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_call_barring.c: implicit conversion from 'enum radio_network_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_call_barring.c: implicit conversion from 'enum radio_sim_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_call_forwarding.c: implicit conversion from 'enum radio_voice_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_call_settings.c: implicit conversion from 'enum radio_voice_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_call_volume.c: implicit conversion from 'enum radio_voice_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_cbs.c: cast increases required alignment of target type [-Wcast-align]
+  why: GArray data, malloc aligned
+armv7-gcc: src/binder_cbs.c: implicit conversion from 'enum radio_messaging_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_cbs.c: implicit conversion from 'enum radio_messaging_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_cell_info.c: format not a string literal, argument types not checked [-Wformat-nonliteral]
+  why: binder_cell_info_int*_format(): every caller passes a literal format
+armv7-gcc: src/binder_cell_info.c: implicit conversion from 'enum radio_network_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_cell_info.c: implicit conversion from 'enum radio_network_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_data.c: implicit conversion from 'enum radio_aidl_config_req' to 'enum radio_config_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_data.c: implicit conversion from 'enum radio_data_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_data.c: implicit conversion from 'enum radio_data_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_data.c: implicit conversion from 'enum radio_network_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_data.c: implicit conversion from 'RADIO_PDP_PROTOCOL_TYPE' {aka 'enum radio_pdp_protocol_type'} to 'enum ofono_gprs_proto' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_devinfo.c: implicit conversion from 'enum radio_modem_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_devmon_ds.c: implicit conversion from 'enum radio_modem_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_devmon_if.c: implicit conversion from 'enum radio_network_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_ims_reg.c: implicit conversion from 'enum radio_network_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_ims_reg.c: implicit conversion from 'enum radio_network_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_logger.c: implicit conversion from 'enum radio_ind' to 'RADIO_CONFIG_IND' {aka 'enum radio_config_ind'} [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_logger.c: implicit conversion from 'enum radio_req' to 'RADIO_CONFIG_REQ' {aka 'enum radio_config_req'} [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_logger.c: implicit conversion from 'enum radio_resp' to 'RADIO_CONFIG_RESP' {aka 'enum radio_config_resp'} [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_logger.c: implicit conversion from 'RADIO_CONFIG_IND' {aka 'enum radio_config_ind'} to 'RADIO_IND' {aka 'enum radio_ind'} [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_netreg.c: implicit conversion from 'enum ofono_operator_status' to 'RADIO_OP_STATUS' {aka 'enum radio_operator_status'} [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_netreg.c: implicit conversion from 'enum radio_modem_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_netreg.c: implicit conversion from 'enum radio_network_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_netreg.c: implicit conversion from 'enum radio_network_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_network.c: cast increases required alignment of target type [-Wcast-align]
+  why: g_malloc() block laid out with G_ALIGN8
+armv7-gcc: src/binder_network.c: implicit conversion from 'enum radio_data_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_network.c: implicit conversion from 'enum radio_modem_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_network.c: implicit conversion from 'enum radio_network_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_network.c: implicit conversion from 'enum radio_network_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_network.c: implicit conversion from 'enum radio_pref_net_type_internal' to 'RADIO_PREF_NET_TYPE' {aka 'enum radio_pref_net_type'} [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_plugin.c: implicit conversion from 'enum radio_modem_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_plugin.c: implicit conversion from 'enum radio_modem_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_radio_caps.c: implicit conversion from 'enum radio_modem_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_radio_caps.c: implicit conversion from 'enum radio_modem_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_radio.c: implicit conversion from 'enum radio_modem_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_radio.c: implicit conversion from 'enum radio_modem_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_sim_card.c: implicit conversion from 'enum radio_sim_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_sim_card.c: implicit conversion from 'enum radio_sim_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_sim.c: cast increases required alignment of target type [-Wcast-align]
+  why: offsetof() into a struct of RADIO_REQ fields, so aligned
+armv7-gcc: src/binder_sim.c: implicit conversion from 'enum radio_network_req' to 'RADIO_REQ' {aka 'enum radio_req'} [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_sim.c: implicit conversion from 'enum radio_sim_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_sim.c: implicit conversion from 'enum radio_sim_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_sms.c: implicit conversion from 'enum radio_messaging_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_sms.c: implicit conversion from 'enum radio_messaging_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_stk.c: implicit conversion from 'enum radio_sim_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_stk.c: implicit conversion from 'enum radio_sim_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_stk.c: implicit conversion from 'enum radio_voice_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_ussd.c: implicit conversion from 'enum radio_voice_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_ussd.c: implicit conversion from 'enum radio_voice_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_util.c: implicit conversion from 'enum radio_pref_net_type_internal' to 'RADIO_PREF_NET_TYPE' {aka 'enum radio_pref_net_type'} [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_voicecall.c: implicit conversion from 'enum radio_network_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_voicecall.c: implicit conversion from 'enum radio_network_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_voicecall.c: implicit conversion from 'enum radio_voice_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_voicecall.c: implicit conversion from 'enum radio_voice_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+armv7-gcc: src/binder_voicecall.c: implicit conversion from 'RADIO_CALL_STATE' {aka 'enum radio_call_state'} to 'enum ofono_call_status' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+clang-analyze: src/binder_base.c: Loss of sign in implicit conversion [alpha.core.Conversion]
+  why: sign changes between GLib/libgbinder size types and protocol values; reviewed as a class, not one by one
+clang-analyze: src/binder_cbs.c: Array access (from variable 'list') results in a null pointer dereference [core.NullDereference]
+  why: list is NULL only when n == 0, the loop doesn't run
+clang-analyze: src/binder_connman.c: Loss of sign in implicit conversion [alpha.core.Conversion]
+  why: sign changes between GLib/libgbinder size types and protocol values; reviewed as a class, not one by one
+clang-analyze: src/binder_data.c: Loss of sign in implicit conversion [alpha.core.Conversion]
+  why: sign changes between GLib/libgbinder size types and protocol values; reviewed as a class, not one by one
+clang-analyze: src/binder_netreg.c: Loss of sign in implicit conversion [alpha.core.Conversion]
+  why: sign changes between GLib/libgbinder size types and protocol values; reviewed as a class, not one by one
+clang-analyze: src/binder_network.c: Loss of sign in implicit conversion [alpha.core.Conversion]
+  why: sign changes between GLib/libgbinder size types and protocol values; reviewed as a class, not one by one
+clang-analyze: src/binder_network.c: Value stored to 'ptr' is never read [deadcode.DeadStores]
+  why: harmless dead store
+clang-analyze: src/binder_plugin.c: Loss of sign in implicit conversion [alpha.core.Conversion]
+  why: sign changes between GLib/libgbinder size types and protocol values; reviewed as a class, not one by one
+clang-analyze: src/binder_plugin.c: Value stored to 'ofono_slot' is never read [deadcode.DeadStores]
+  why: harmless dead store
+clang-analyze: src/binder_sim_card.c: Although the value stored to 'status_1_5' is used in the enclosing expression, the value is never actually read from 'status_1_5' [deadcode.DeadStores]
+  why: harmless dead store
+clang-analyze: src/binder_sim_card.c: Pointer arithmetic on non-array variables relies on memory layout, which is dangerous [alpha.core.PointerArithm]
+  why: offset into the vtable-like API struct by offsetof()
+clang-analyze: src/binder_sim.c: Loss of sign in implicit conversion [alpha.core.Conversion]
+  why: sign changes between GLib/libgbinder size types and protocol values; reviewed as a class, not one by one
+clang-analyze: src/binder_voicecall.c: Access to field 'id' results in a dereference of a null pointer (loaded from variable 'c1') [core.NullDereference]
+  why: binder_voicecall_set_calls(): that branch needs both nc and oc non-NULL
+clang-analyze: src/binder_voicecall.c: Loss of sign in implicit conversion [alpha.core.Conversion]
+  why: sign changes between GLib/libgbinder size types and protocol values; reviewed as a class, not one by one
+clang-tidy: src/binder_base.c: narrowing conversion from 'guint' (aka 'unsigned int') to signed type 'int' is implementation-defined [bugprone-narrowing-conversions]
+  why: unsigned to signed conversions of protocol values (ids, counts, lengths) that fit an int; reviewed as a class, not one by one
+clang-tidy: src/binder_base.c: the value returned by this function should not be disregarded; neglecting it may lead to errors [cert-err33-c]
+  why: return value intentionally ignored (snprintf into a sized buffer, best-effort reads)
+clang-tidy: src/binder_call_barring.c: suspicious comparison of 'sizeof(expr)' to a constant [bugprone-sizeof-expression]
+  why: inside the expansion of GLib's g_slice_new0()/g_slice_dup() macros
+clang-tidy: src/binder_call_forwarding.c: narrowing conversion from 'guint' (aka 'unsigned int') to signed type 'int' is implementation-defined [bugprone-narrowing-conversions]
+  why: unsigned to signed conversions of protocol values (ids, counts, lengths) that fit an int; reviewed as a class, not one by one
+clang-tidy: src/binder_call_forwarding.c: suspicious comparison of 'sizeof(expr)' to a constant [bugprone-sizeof-expression]
+  why: inside the expansion of GLib's g_slice_new0()/g_slice_dup() macros
+clang-tidy: src/binder_call_settings.c: suspicious comparison of 'sizeof(expr)' to a constant [bugprone-sizeof-expression]
+  why: inside the expansion of GLib's g_slice_new0()/g_slice_dup() macros
+clang-tidy: src/binder_call_volume.c: suspicious comparison of 'sizeof(expr)' to a constant [bugprone-sizeof-expression]
+  why: inside the expansion of GLib's g_slice_new0()/g_slice_dup() macros
+clang-tidy: src/binder_cbs.c: Array access (from variable 'list') results in a null pointer dereference [clang-analyzer-core.NullDereference]
+  why: list is NULL only when n == 0, the loop doesn't run
+clang-tidy: src/binder_cbs.c: 'atoi' used to convert a string to an integer value, but function will not report conversion errors; consider using 'strtol' instead [cert-err34-c]
+  why: atoi/sscanf on HAL or config strings whose result is range checked or only logged
+clang-tidy: src/binder_cbs.c: narrowing conversion from 'guint' (aka 'unsigned int') to signed type 'gint32' (aka 'int') is implementation-defined [bugprone-narrowing-conversions]
+  why: unsigned to signed conversions of protocol values (ids, counts, lengths) that fit an int; reviewed as a class, not one by one
+clang-tidy: src/binder_cbs.c: suspicious comparison of 'sizeof(expr)' to a constant [bugprone-sizeof-expression]
+  why: inside the expansion of GLib's g_slice_new0()/g_slice_dup() macros
+clang-tidy: src/binder_cell_info.c: comparing object representation of type 'struct ofono_cell' which does not have a unique object representation; consider comparing the members of the object manually [bugprone-suspicious-memory-comparison,cert-exp42-c,cert-flp37-c]
+  why: struct ofono_cell entries are g_new0()ed, padding is zero
+clang-tidy: src/binder_cell_info.c: function 'memcmp' is called without explicitly comparing result [bugprone-suspicious-string-compare]
+  why: strcmp/memcmp used as a boolean, intended
+clang-tidy: src/binder_cell_info.c: narrowing conversion from 'guint32' (aka 'unsigned int') to signed type 'int' is implementation-defined [bugprone-narrowing-conversions]
+  why: unsigned to signed conversions of protocol values (ids, counts, lengths) that fit an int; reviewed as a class, not one by one
+clang-tidy: src/binder_cell_info.c: narrowing conversion from 'guint64' (aka 'unsigned long') to signed type 'int64_t' (aka 'long') is implementation-defined [bugprone-narrowing-conversions]
+  why: unsigned to signed conversions of protocol values (ids, counts, lengths) that fit an int; reviewed as a class, not one by one
+clang-tidy: src/binder_cell_info.c: narrowing conversion from 'unsigned long' to signed type 'int' is implementation-defined [bugprone-narrowing-conversions]
+  why: unsigned to signed conversions of protocol values (ids, counts, lengths) that fit an int; reviewed as a class, not one by one
+clang-tidy: src/binder_connman.c: narrowing conversion from 'dbus_bool_t' (aka 'unsigned int') to signed type 'gboolean' (aka 'int') is implementation-defined [bugprone-narrowing-conversions]
+  why: unsigned to signed conversions of protocol values (ids, counts, lengths) that fit an int; reviewed as a class, not one by one
+clang-tidy: src/binder_data.c: function 'binder_data_allow_submit_request' is within a recursive call chain [misc-no-recursion]
+  why: bounded: request queue restarts, radio caps permutations of at most a few slots, storage dir depth
+clang-tidy: src/binder_data.c: function 'binder_data_manager_check_data' is within a recursive call chain [misc-no-recursion]
+  why: bounded: request queue restarts, radio caps permutations of at most a few slots, storage dir depth
+clang-tidy: src/binder_data.c: function 'binder_data_manager_switch_data_on' is within a recursive call chain [misc-no-recursion]
+  why: bounded: request queue restarts, radio caps permutations of at most a few slots, storage dir depth
+clang-tidy: src/binder_data.c: function 'binder_data_request_queue' is within a recursive call chain [misc-no-recursion]
+  why: bounded: request queue restarts, radio caps permutations of at most a few slots, storage dir depth
+clang-tidy: src/binder_data.c: function 'binder_data_request_submit_next' is within a recursive call chain [misc-no-recursion]
+  why: bounded: request queue restarts, radio caps permutations of at most a few slots, storage dir depth
+clang-tidy: src/binder_data.c: narrowing conversion from 'gint64' (aka 'long') to signed type 'int' is implementation-defined [bugprone-narrowing-conversions]
+  why: unsigned to signed conversions of protocol values (ids, counts, lengths) that fit an int; reviewed as a class, not one by one
+clang-tidy: src/binder_data.c: The value '15' provided to the cast expression is not in the valid range of values for 'ofono_radio_access_mode' [clang-analyzer-optin.core.EnumCastOutOfRange]
+  why: bit masks of flag enums (access modes, RAF, pref net types) are intended
+clang-tidy: src/binder_data.c: The value '3' provided to the cast expression is not in the valid range of values for 'ofono_radio_access_mode' [clang-analyzer-optin.core.EnumCastOutOfRange]
+  why: bit masks of flag enums (access modes, RAF, pref net types) are intended
+clang-tidy: src/binder_devinfo.c: suspicious comparison of 'sizeof(expr)' to a constant [bugprone-sizeof-expression]
+  why: inside the expansion of GLib's g_slice_new0()/g_slice_dup() macros
+clang-tidy: src/binder_gprs_context.c: 'atoi' used to convert a string to an integer value, but function will not report conversion errors; consider using 'strtol' instead [cert-err34-c]
+  why: atoi/sscanf on HAL or config strings whose result is range checked or only logged
+clang-tidy: src/binder_gprs_context.c: narrowing conversion from 'guint' (aka 'unsigned int') to signed type 'int' is implementation-defined [bugprone-narrowing-conversions]
+  why: unsigned to signed conversions of protocol values (ids, counts, lengths) that fit an int; reviewed as a class, not one by one
+clang-tidy: src/binder_gprs_context.c: switching on non-enum value without default case may not cover all cases [bugprone-switch-missing-default-case]
+  why: switch on a value whose other cases fall through to the code after the switch
+clang-tidy: src/binder_gprs.c: suspicious comparison of 'sizeof(expr)' to a constant [bugprone-sizeof-expression]
+  why: inside the expansion of GLib's g_slice_new0()/g_slice_dup() macros
+clang-tidy: src/binder_ims.c: suspicious comparison of 'sizeof(expr)' to a constant [bugprone-sizeof-expression]
+  why: inside the expansion of GLib's g_slice_new0()/g_slice_dup() macros
+clang-tidy: src/binder_logger.c: The value '6' provided to the cast expression is not in the valid range of values for 'radio_observer_priority' [clang-analyzer-optin.core.EnumCastOutOfRange]
+  why: bit masks of flag enums (access modes, RAF, pref net types) are intended
+clang-tidy: src/binder_netreg.c: 'atoi' used to convert a string to an integer value, but function will not report conversion errors; consider using 'strtol' instead [cert-err34-c]
+  why: atoi/sscanf on HAL or config strings whose result is range checked or only logged
+clang-tidy: src/binder_netreg.c: both sides of operator are equivalent [misc-redundant-expression]
+  why: consecutive reads of identical int32 fields from a parcel
+clang-tidy: src/binder_netreg.c: function 'strcmp' is called without explicitly comparing result [bugprone-suspicious-string-compare]
+  why: strcmp/memcmp used as a boolean, intended
+clang-tidy: src/binder_netreg.c: narrowing conversion from 'guint32' (aka 'unsigned int') to signed type 'int' is implementation-defined [bugprone-narrowing-conversions]
+  why: unsigned to signed conversions of protocol values (ids, counts, lengths) that fit an int; reviewed as a class, not one by one
+clang-tidy: src/binder_netreg.c: narrowing conversion from 'guint' (aka 'unsigned int') to signed type 'int' is implementation-defined [bugprone-narrowing-conversions]
+  why: unsigned to signed conversions of protocol values (ids, counts, lengths) that fit an int; reviewed as a class, not one by one
+clang-tidy: src/binder_netreg.c: 'sscanf' used to convert a string to an unsigned integer value, but function will not report conversion errors; consider using 'strtoul' instead [cert-err34-c]
+  why: atoi/sscanf on HAL or config strings whose result is range checked or only logged
+clang-tidy: src/binder_netreg.c: suspicious comparison of 'sizeof(expr)' to a constant [bugprone-sizeof-expression]
+  why: inside the expansion of GLib's g_slice_new0()/g_slice_dup() macros
+clang-tidy: src/binder_netreg.c: the value returned by this function should not be disregarded; neglecting it may lead to errors [cert-err33-c]
+  why: return value intentionally ignored (snprintf into a sized buffer, best-effort reads)
+clang-tidy: src/binder_network.c: both sides of operator are equivalent [misc-redundant-expression]
+  why: consecutive reads of identical int32 fields from a parcel
+clang-tidy: src/binder_network.c: function 'memcmp' is called without explicitly comparing result [bugprone-suspicious-string-compare]
+  why: strcmp/memcmp used as a boolean, intended
+clang-tidy: src/binder_network.c: narrowing conversion from 'guint64' (aka 'unsigned long') to signed type 'int' is implementation-defined [bugprone-narrowing-conversions]
+  why: unsigned to signed conversions of protocol values (ids, counts, lengths) that fit an int; reviewed as a class, not one by one
+clang-tidy: src/binder_network.c: switching on non-enum value without default case may not cover all cases [bugprone-switch-missing-default-case]
+  why: switch on a value whose other cases fall through to the code after the switch
+clang-tidy: src/binder_network.c: The value '15' provided to the cast expression is not in the valid range of values for 'ofono_radio_access_mode' [clang-analyzer-optin.core.EnumCastOutOfRange]
+  why: bit masks of flag enums (access modes, RAF, pref net types) are intended
+clang-tidy: src/binder_network.c: The value '26' provided to the cast expression is not in the valid range of values for 'radio_pref_net_type' [clang-analyzer-optin.core.EnumCastOutOfRange]
+  why: bit masks of flag enums (access modes, RAF, pref net types) are intended
+clang-tidy: src/binder_network.c: Value stored to 'ptr' is never read [clang-analyzer-deadcode.DeadStores]
+  why: harmless dead store
+clang-tidy: src/binder_plugin.c: function 'binder_plugin_set_storage_perm_fd' is within a recursive call chain [misc-no-recursion]
+  why: bounded: request queue restarts, radio caps permutations of at most a few slots, storage dir depth
+clang-tidy: src/binder_plugin.c: function 'strcmp' is called without explicitly comparing result [bugprone-suspicious-string-compare]
+  why: strcmp/memcmp used as a boolean, intended
+clang-tidy: src/binder_plugin.c: narrowing conversion from 'guint' (aka 'unsigned int') to signed type 'int' is implementation-defined [bugprone-narrowing-conversions]
+  why: unsigned to signed conversions of protocol values (ids, counts, lengths) that fit an int; reviewed as a class, not one by one
+clang-tidy: src/binder_plugin.c: The value '15' provided to the cast expression is not in the valid range of values for 'ofono_radio_access_mode' [clang-analyzer-optin.core.EnumCastOutOfRange]
+  why: bit masks of flag enums (access modes, RAF, pref net types) are intended
+clang-tidy: src/binder_plugin.c: Value stored to 'ofono_slot' is never read [clang-analyzer-deadcode.DeadStores]
+  why: harmless dead store
+clang-tidy: src/binder_radio_caps.c: function 'binder_radio_caps_permutate' is within a recursive call chain [misc-no-recursion]
+  why: bounded: request queue restarts, radio caps permutations of at most a few slots, storage dir depth
+clang-tidy: src/binder_radio_caps.c: narrowing conversion from 'guint' (aka 'unsigned int') to signed type 'int' is implementation-defined [bugprone-narrowing-conversions]
+  why: unsigned to signed conversions of protocol values (ids, counts, lengths) that fit an int; reviewed as a class, not one by one
+clang-tidy: src/binder_radio_caps.c: suspicious comparison of 'sizeof(expr)' to a constant [bugprone-sizeof-expression]
+  why: inside the expansion of GLib's g_slice_new0()/g_slice_dup() macros
+clang-tidy: src/binder_radio_settings.c: suspicious comparison of 'sizeof(expr)' to a constant [bugprone-sizeof-expression]
+  why: inside the expansion of GLib's g_slice_new0()/g_slice_dup() macros
+clang-tidy: src/binder_sim_card.c: Although the value stored to 'status_1_5' is used in the enclosing expression, the value is never actually read from 'status_1_5' [clang-analyzer-deadcode.DeadStores]
+  why: harmless dead store
+clang-tidy: src/binder_sim_card.c: narrowing conversion from 'guint' (aka 'unsigned int') to signed type 'gint32' (aka 'int') is implementation-defined [bugprone-narrowing-conversions]
+  why: unsigned to signed conversions of protocol values (ids, counts, lengths) that fit an int; reviewed as a class, not one by one
+clang-tidy: src/binder_sim.c: 'finished_req' declared with a const-qualified typedef; results in the type being 'void *const' instead of 'const void *' [misc-misplaced-const]
+  why: const gpointer is meant (the pointer is const)
+clang-tidy: src/binder_sim.c: narrowing conversion from 'gsize' (aka 'unsigned long') to signed type 'gssize' (aka 'long') is implementation-defined [bugprone-narrowing-conversions]
+  why: unsigned to signed conversions of protocol values (ids, counts, lengths) that fit an int; reviewed as a class, not one by one
+clang-tidy: src/binder_sim.c: narrowing conversion from 'guint' (aka 'unsigned int') to signed type 'gint32' (aka 'int') is implementation-defined [bugprone-narrowing-conversions]
+  why: unsigned to signed conversions of protocol values (ids, counts, lengths) that fit an int; reviewed as a class, not one by one
+clang-tidy: src/binder_sim.c: narrowing conversion from 'guint' (aka 'unsigned int') to signed type 'int' is implementation-defined [bugprone-narrowing-conversions]
+  why: unsigned to signed conversions of protocol values (ids, counts, lengths) that fit an int; reviewed as a class, not one by one
+clang-tidy: src/binder_sim.c: narrowing conversion from 'unsigned int' to signed type 'int' is implementation-defined [bugprone-narrowing-conversions]
+  why: unsigned to signed conversions of protocol values (ids, counts, lengths) that fit an int; reviewed as a class, not one by one
+clang-tidy: src/binder_sim.c: suspicious comparison of 'sizeof(expr)' to a constant [bugprone-sizeof-expression]
+  why: inside the expansion of GLib's g_slice_new0()/g_slice_dup() macros
+clang-tidy: src/binder_sim.c: The value '-1' provided to the cast expression is not in the valid range of values for 'ofono_sim_file_structure' [clang-analyzer-optin.core.EnumCastOutOfRange]
+  why: bit masks of flag enums (access modes, RAF, pref net types) are intended
+clang-tidy: src/binder_sms.c: narrowing conversion from 'guint' (aka 'unsigned int') to signed type 'int' is implementation-defined [bugprone-narrowing-conversions]
+  why: unsigned to signed conversions of protocol values (ids, counts, lengths) that fit an int; reviewed as a class, not one by one
+clang-tidy: src/binder_sms.c: suspicious comparison of 'sizeof(expr)' to a constant [bugprone-sizeof-expression]
+  why: inside the expansion of GLib's g_slice_new0()/g_slice_dup() macros
+clang-tidy: src/binder_stk.c: narrowing conversion from 'guint' (aka 'unsigned int') to signed type 'int' is implementation-defined [bugprone-narrowing-conversions]
+  why: unsigned to signed conversions of protocol values (ids, counts, lengths) that fit an int; reviewed as a class, not one by one
+clang-tidy: src/binder_stk.c: suspicious comparison of 'sizeof(expr)' to a constant [bugprone-sizeof-expression]
+  why: inside the expansion of GLib's g_slice_new0()/g_slice_dup() macros
+clang-tidy: src/binder_ussd.c: suspicious comparison of 'sizeof(expr)' to a constant [bugprone-sizeof-expression]
+  why: inside the expansion of GLib's g_slice_new0()/g_slice_dup() macros
+clang-tidy: src/binder_util.c: narrowing conversion from 'unsigned long' to signed type 'gssize' (aka 'long') is implementation-defined [bugprone-narrowing-conversions]
+  why: unsigned to signed conversions of protocol values (ids, counts, lengths) that fit an int; reviewed as a class, not one by one
+clang-tidy: src/binder_util.c: performing an implicit widening conversion to type 'gsize' (aka 'unsigned long') of a multiplication performed in type 'guint' (aka 'unsigned int') [bugprone-implicit-widening-of-multiplication-result]
+  why: count and elemsize come from small HIDL vectors
+clang-tidy: src/binder_util.c: switch has 2 consecutive identical branches [bugprone-branch-clone]
+  why: two technologies intentionally map to the same string
+clang-tidy: src/binder_util.c: The value '15' provided to the cast expression is not in the valid range of values for 'ofono_radio_access_mode' [clang-analyzer-optin.core.EnumCastOutOfRange]
+  why: bit masks of flag enums (access modes, RAF, pref net types) are intended
+clang-tidy: src/binder_util.c: The value '167432' provided to the cast expression is not in the valid range of values for 'radio_access_family' [clang-analyzer-optin.core.EnumCastOutOfRange]
+  why: bit masks of flag enums (access modes, RAF, pref net types) are intended
+clang-tidy: src/binder_util.c: The value '232974' provided to the cast expression is not in the valid range of values for 'radio_access_family' [clang-analyzer-optin.core.EnumCastOutOfRange]
+  why: bit masks of flag enums (access modes, RAF, pref net types) are intended
+clang-tidy: src/binder_util.c: The value '23' provided to the cast expression is not in the valid range of values for 'radio_pref_net_type' [clang-analyzer-optin.core.EnumCastOutOfRange]
+  why: bit masks of flag enums (access modes, RAF, pref net types) are intended
+clang-tidy: src/binder_util.c: The value '24' provided to the cast expression is not in the valid range of values for 'radio_pref_net_type' [clang-analyzer-optin.core.EnumCastOutOfRange]
+  why: bit masks of flag enums (access modes, RAF, pref net types) are intended
+clang-tidy: src/binder_util.c: The value '26' provided to the cast expression is not in the valid range of values for 'radio_pref_net_type' [clang-analyzer-optin.core.EnumCastOutOfRange]
+  why: bit masks of flag enums (access modes, RAF, pref net types) are intended
+clang-tidy: src/binder_util.c: The value '28' provided to the cast expression is not in the valid range of values for 'radio_pref_net_type' [clang-analyzer-optin.core.EnumCastOutOfRange]
+  why: bit masks of flag enums (access modes, RAF, pref net types) are intended
+clang-tidy: src/binder_util.c: The value '3' provided to the cast expression is not in the valid range of values for 'ofono_radio_access_mode' [clang-analyzer-optin.core.EnumCastOutOfRange]
+  why: bit masks of flag enums (access modes, RAF, pref net types) are intended
+clang-tidy: src/binder_util.c: The value '540672' provided to the cast expression is not in the valid range of values for 'radio_access_family' [clang-analyzer-optin.core.EnumCastOutOfRange]
+  why: bit masks of flag enums (access modes, RAF, pref net types) are intended
+clang-tidy: src/binder_util.c: The value '65542' provided to the cast expression is not in the valid range of values for 'radio_access_family' [clang-analyzer-optin.core.EnumCastOutOfRange]
+  why: bit masks of flag enums (access modes, RAF, pref net types) are intended
+clang-tidy: src/binder_util.c: The value '6' provided to the cast expression is not in the valid range of values for 'ofono_radio_access_mode' [clang-analyzer-optin.core.EnumCastOutOfRange]
+  why: bit masks of flag enums (access modes, RAF, pref net types) are intended
+clang-tidy: src/binder_util.c: The value '708104' provided to the cast expression is not in the valid range of values for 'radio_access_family' [clang-analyzer-optin.core.EnumCastOutOfRange]
+  why: bit masks of flag enums (access modes, RAF, pref net types) are intended
+clang-tidy: src/binder_util.c: The value '773646' provided to the cast expression is not in the valid range of values for 'radio_access_family' [clang-analyzer-optin.core.EnumCastOutOfRange]
+  why: bit masks of flag enums (access modes, RAF, pref net types) are intended
+clang-tidy: src/binder_util.c: The value '7' provided to the cast expression is not in the valid range of values for 'ofono_radio_access_mode' [clang-analyzer-optin.core.EnumCastOutOfRange]
+  why: bit masks of flag enums (access modes, RAF, pref net types) are intended
+clang-tidy: src/binder_voicecall.c: Access to field 'id' results in a dereference of a null pointer (loaded from variable 'c1') [clang-analyzer-core.NullDereference]
+  why: binder_voicecall_set_calls(): that branch needs both nc and oc non-NULL
+clang-tidy: src/binder_voicecall.c: narrowing conversion from 'guint' (aka 'unsigned int') to signed type 'gint32' (aka 'int') is implementation-defined [bugprone-narrowing-conversions]
+  why: unsigned to signed conversions of protocol values (ids, counts, lengths) that fit an int; reviewed as a class, not one by one
+clang-tidy: src/binder_voicecall.c: narrowing conversion from 'guint' (aka 'unsigned int') to signed type 'int' is implementation-defined [bugprone-narrowing-conversions]
+  why: unsigned to signed conversions of protocol values (ids, counts, lengths) that fit an int; reviewed as a class, not one by one
+clang-tidy: src/binder_voicecall.c: suspicious comparison of 'sizeof(expr)' to a constant [bugprone-sizeof-expression]
+  why: inside the expansion of GLib's g_slice_new0()/g_slice_dup() macros
+clang-tidy: src/binder_voicecall.c: The value '4294967295' provided to the cast expression is not in the valid range of values for 'ofono_call_status' [clang-analyzer-optin.core.EnumCastOutOfRange]
+  why: bit masks of flag enums (access modes, RAF, pref net types) are intended
+cppcheck: lib/src/binder_ext_slot.c: g_type_class_add_private has been deprecated since version 2.58 and should not be used in newly-written code. Use the G_ADD_PRIVATE() macro with the G_DEFINE_* family of macros to add instance private data to a type. [g_type_class_add_privateCalled]
+  why: kept for compatibility with older GLib in the extension library
+cppcheck: src/binder_data.c: Either the condition 'prev' is redundant or there is possible null pointer dereference: prev. [nullPointerRedundantCheck]
+  why: dr is always in the queue when this runs; the check is defensive
+cppcheck: src/binder_data.c: Memory leak: setup.apn [memleak]
+  why: ownership passes to the returned request / idle source, freed by its destroy notify
+cppcheck: src/binder_data.c: Memory leak: setup.password [memleak]
+  why: ownership passes to the returned request / idle source, freed by its destroy notify
+cppcheck: src/binder_data.c: Memory leak: setup.username [memleak]
+  why: ownership passes to the returned request / idle source, freed by its destroy notify
+cppcheck: src/binder_data.c: %u in format string (no. 1) requires 'unsigned int' but the argument type is 'signed int'. [invalidPrintfArgType_uint]
+  why: int vs unsigned format on values that are never negative
+cppcheck: src/binder_devmon_ds.c: struct member 'binder_devmon_ds_api::name' is never used. [unusedStructMember]
+  why: names kept for debugging
+cppcheck: src/binder_devmon_if.c: struct member 'binder_devmon_if_api::name' is never used. [unusedStructMember]
+  why: names kept for debugging
+cppcheck: src/binder_netreg.c: %u in format string (no. 1) requires 'unsigned int *' but the argument type is 'signed int *'. [invalidScanfArgType_int]
+  why: int vs unsigned format on values that are never negative
+cppcheck: src/binder_netreg.c: %u in format string (no. 2) requires 'unsigned int *' but the argument type is 'signed int *'. [invalidScanfArgType_int]
+  why: int vs unsigned format on values that are never negative
+cppcheck: src/binder_netreg.c: %u in format string (no. 3) requires 'unsigned int *' but the argument type is 'signed int *'. [invalidScanfArgType_int]
+  why: int vs unsigned format on values that are never negative
+cppcheck: src/binder_netreg.c: %u in format string (no. 4) requires 'unsigned int *' but the argument type is 'signed int *'. [invalidScanfArgType_int]
+  why: int vs unsigned format on values that are never negative
+cppcheck: src/binder_netreg.c: %u in format string (no. 5) requires 'unsigned int *' but the argument type is 'signed int *'. [invalidScanfArgType_int]
+  why: int vs unsigned format on values that are never negative
+cppcheck: src/binder_netreg.c: %u in format string (no. 6) requires 'unsigned int *' but the argument type is 'signed int *'. [invalidScanfArgType_int]
+  why: int vs unsigned format on values that are never negative
+cppcheck: src/binder_netreg.c: %u in format string (no. 8) requires 'unsigned int *' but the argument type is 'signed int *'. [invalidScanfArgType_int]
+  why: int vs unsigned format on values that are never negative
+cppcheck: src/binder_netreg.c: %u in format string (no. 9) requires 'unsigned int *' but the argument type is 'signed int *'. [invalidScanfArgType_int]
+  why: int vs unsigned format on values that are never negative
+cppcheck: src/binder_network.c: struct member 'binder_network_operator_info::lalpha' is never used. [unusedStructMember]
+  why: names kept for debugging
+cppcheck: src/binder_network.c: struct member 'binder_network_operator_info::numeric' is never used. [unusedStructMember]
+  why: names kept for debugging
+cppcheck: src/binder_network.c: struct member 'binder_network_operator_info::salpha' is never used. [unusedStructMember]
+  why: names kept for debugging
+cppcheck: src/binder_network.c: Variable 'ptr' is assigned a value that is never used. [unreadVariable]
+  why: harmless dead store
+cppcheck: src/binder_radio_caps.c: struct member 'binder_radio_caps_api::name' is never used. [unusedStructMember]
+  why: names kept for debugging
+cppcheck: src/binder_sim_card.c: Redundant assignment of 'status_1_5' to itself. [selfAssignment]
+  why: const RadioCardStatus_1_5* status_1_5 = status_1_5 = ...; odd but well defined
+cppcheck: src/binder_sim.c: Memory leak: cbd [memleak]
+  why: ownership passes to the returned request / idle source, freed by its destroy notify
+fanalyzer: src/binder_cbs.c: dereference of NULL 'list' [CWE-476] [-Wanalyzer-null-dereference]
+  why: list is NULL only when n == 0, the loop doesn't run
+fanalyzer: src/binder_data.c: dereference of NULL 'dm' [CWE-476] [-Wanalyzer-null-dereference]
+  why: binder_data_new() always gets the plugin's data manager; binder_data_manager_ref() tolerates NULL
+fanalyzer: src/binder_gprs.c: dereference of NULL '0' [CWE-476] [-Wanalyzer-null-dereference]
+  why: binder_*_get_data() tolerates a NULL atom; ofono core never passes one
+fanalyzer: src/binder_gprs.c: dereference of NULL 'self' [CWE-476] [-Wanalyzer-null-dereference]
+  why: binder_*_get_data() tolerates a NULL atom; ofono core never passes one
+fanalyzer: src/binder_netreg.c: dereference of NULL '0' [CWE-476] [-Wanalyzer-null-dereference]
+  why: binder_*_get_data() tolerates a NULL atom; ofono core never passes one
+fanalyzer: src/binder_netreg.c: dereference of NULL 'self' [CWE-476] [-Wanalyzer-null-dereference]
+  why: binder_*_get_data() tolerates a NULL atom; ofono core never passes one
+fanalyzer: src/binder_voicecall.c: dereference of NULL 'n' [CWE-476] [-Wanalyzer-null-dereference]
+  why: binder_voicecall_set_calls(): that branch needs both nc and oc non-NULL
+flawfinder: src/binder_base.c: [2] (buffer) char
+  why: fixed size buffers written with bounded copies (g_strlcpy/snprintf/MIN)
+flawfinder: src/binder_base.c: [4] (format) snprintf
+  why: the format is a macro literal
+flawfinder: src/binder_call_forwarding.c: [2] (buffer) memcpy
+  why: fixed size buffers written with bounded copies (g_strlcpy/snprintf/MIN)
+flawfinder: src/binder_cbs.c: [2] (integer) atoi
+  why: result is range checked or only logged
+flawfinder: src/binder_gprs_context.c: [2] (integer) atoi
+  why: result is range checked or only logged
+flawfinder: src/binder_netreg.c: [1] (buffer) strlen
+  why: fixed size buffers written with bounded copies (g_strlcpy/snprintf/MIN)
+flawfinder: src/binder_netreg.c: [2] (buffer) char
+  why: fixed size buffers written with bounded copies (g_strlcpy/snprintf/MIN)
+flawfinder: src/binder_netreg.c: [2] (integer) atoi
+  why: result is range checked or only logged
+flawfinder: src/binder_network.c: [1] (buffer) strlen
+  why: fixed size buffers written with bounded copies (g_strlcpy/snprintf/MIN)
+flawfinder: src/binder_network.c: [2] (buffer) char
+  why: fixed size buffers written with bounded copies (g_strlcpy/snprintf/MIN)
+flawfinder: src/binder_network.c: [2] (buffer) memcpy
+  why: fixed size buffers written with bounded copies (g_strlcpy/snprintf/MIN)
+flawfinder: src/binder_plugin.c: [1] (buffer) strlen
+  why: fixed size buffers written with bounded copies (g_strlcpy/snprintf/MIN)
+flawfinder: src/binder_plugin.c: [2] (misc) open
+  why: binder_plugin_set_storage_perm(): the configured storage directory itself, everything below is opened with O_NOFOLLOW
+flawfinder: src/binder_radio_caps.c: [1] (buffer) strlen
+  why: fixed size buffers written with bounded copies (g_strlcpy/snprintf/MIN)
+flawfinder: src/binder_radio_caps.c: [2] (buffer) memcpy
+  why: fixed size buffers written with bounded copies (g_strlcpy/snprintf/MIN)
+flawfinder: src/binder_sim.c: [1] (buffer) read
+  why: fixed size buffers written with bounded copies (g_strlcpy/snprintf/MIN)
+flawfinder: src/binder_sim.c: [1] (buffer) strlen
+  why: fixed size buffers written with bounded copies (g_strlcpy/snprintf/MIN)
+flawfinder: src/binder_sim.c: [2] (buffer) memcpy
+  why: fixed size buffers written with bounded copies (g_strlcpy/snprintf/MIN)
+flawfinder: src/binder_sms.c: [2] (buffer) char
+  why: fixed size buffers written with bounded copies (g_strlcpy/snprintf/MIN)
+flawfinder: src/binder_sms.c: [2] (buffer) memcpy
+  why: fixed size buffers written with bounded copies (g_strlcpy/snprintf/MIN)
+flawfinder: src/binder_ussd.c: [1] (buffer) strlen
+  why: fixed size buffers written with bounded copies (g_strlcpy/snprintf/MIN)
+flawfinder: src/binder_util.c: [1] (buffer) strlen
+  why: fixed size buffers written with bounded copies (g_strlcpy/snprintf/MIN)
+flawfinder: src/binder_voicecall.c: [1] (buffer) strlen
+  why: fixed size buffers written with bounded copies (g_strlcpy/snprintf/MIN)
+flawfinder: src/binder_voicecall.c: [2] (buffer) char
+  why: fixed size buffers written with bounded copies (g_strlcpy/snprintf/MIN)
+x86_64-clang: src/binder_call_barring.c: implicit conversion from enumeration type 'enum radio_network_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_call_barring.c: implicit conversion from enumeration type 'enum radio_sim_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_call_forwarding.c: implicit conversion from enumeration type 'enum radio_voice_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_call_settings.c: implicit conversion from enumeration type 'enum radio_voice_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_call_volume.c: implicit conversion from enumeration type 'enum radio_voice_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_cbs.c: cast from 'gchar *' (aka 'char *') to 'BinderCbsRange *' (aka 'struct binder_cbs_range *') increases required alignment from 1 to 4 [-Wcast-align]
+  why: GArray data, malloc aligned
+x86_64-clang: src/binder_cbs.c: implicit conversion from enumeration type 'enum radio_messaging_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_cbs.c: implicit conversion from enumeration type 'enum radio_messaging_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_cell_info.c: cast from 'guint8 *' (aka 'unsigned char *') to 'BinderCellInfo *' (aka 'struct binder_cell_info *') increases required alignment from 1 to 8 [-Wcast-align]
+  why: G_CAST/THIS container-of casts on real objects (gutil_macros.h); only armv7 and clang warn
+x86_64-clang: src/binder_cell_info.c: format string is not a string literal [-Wformat-nonliteral]
+  why: binder_cell_info_int*_format(): every caller passes a literal format
+x86_64-clang: src/binder_cell_info.c: implicit conversion from enumeration type 'enum radio_network_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_cell_info.c: implicit conversion from enumeration type 'enum radio_network_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_connman.c: cast from 'guint8 *' (aka 'unsigned char *') to 'ConnManObject *' (aka 'struct connman_object *') increases required alignment from 1 to 8 [-Wcast-align]
+  why: G_CAST/THIS container-of casts on real objects (gutil_macros.h); only armv7 and clang warn
+x86_64-clang: src/binder_data.c: cast from 'guint8 *' (aka 'unsigned char *') to 'BinderDataObject *' (aka 'struct binder_data_object *') increases required alignment from 1 to 8 [-Wcast-align]
+  why: G_CAST/THIS container-of casts on real objects (gutil_macros.h); only armv7 and clang warn
+x86_64-clang: src/binder_data.c: cast from 'guint8 *' (aka 'unsigned char *') to 'BinderDataRequestAllowData *' (aka 'struct binder_data_request_allow_data *') increases required alignment from 1 to 8 [-Wcast-align]
+  why: G_CAST/THIS container-of casts on real objects (gutil_macros.h); only armv7 and clang warn
+x86_64-clang: src/binder_data.c: cast from 'guint8 *' (aka 'unsigned char *') to 'BinderDataRequestDeact *' (aka 'struct binder_data_request_deact *') increases required alignment from 1 to 8 [-Wcast-align]
+  why: G_CAST/THIS container-of casts on real objects (gutil_macros.h); only armv7 and clang warn
+x86_64-clang: src/binder_data.c: cast from 'guint8 *' (aka 'unsigned char *') to 'BinderDataRequestSetup *' (aka 'struct binder_data_request_setup *') increases required alignment from 1 to 8 [-Wcast-align]
+  why: G_CAST/THIS container-of casts on real objects (gutil_macros.h); only armv7 and clang warn
+x86_64-clang: src/binder_data.c: implicit conversion from enumeration type 'const RADIO_PDP_PROTOCOL_TYPE' (aka 'const enum radio_pdp_protocol_type') to different enumeration type 'enum ofono_gprs_proto' [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_data.c: implicit conversion from enumeration type 'enum radio_aidl_config_req' to different enumeration type 'RADIO_CONFIG_REQ' (aka 'enum radio_config_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_data.c: implicit conversion from enumeration type 'enum radio_data_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_data.c: implicit conversion from enumeration type 'enum radio_data_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_data.c: implicit conversion from enumeration type 'enum radio_network_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_devinfo.c: implicit conversion from enumeration type 'enum radio_modem_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_devmon_combine.c: cast from 'guint8 *' (aka 'unsigned char *') to 'DevMon *' (aka 'struct binder_devmon_combine *') increases required alignment from 1 to 8 [-Wcast-align]
+  why: G_CAST/THIS container-of casts on real objects (gutil_macros.h); only armv7 and clang warn
+x86_64-clang: src/binder_devmon_combine.c: cast from 'guint8 *' (aka 'unsigned char *') to 'DevMonIo *' (aka 'struct binder_devmon_combine_io *') increases required alignment from 1 to 8 [-Wcast-align]
+  why: G_CAST/THIS container-of casts on real objects (gutil_macros.h); only armv7 and clang warn
+x86_64-clang: src/binder_devmon_ds.c: cast from 'guint8 *' (aka 'unsigned char *') to 'DevMon *' (aka 'struct binder_devmon_ds *') increases required alignment from 1 to 8 [-Wcast-align]
+  why: G_CAST/THIS container-of casts on real objects (gutil_macros.h); only armv7 and clang warn
+x86_64-clang: src/binder_devmon_ds.c: cast from 'guint8 *' (aka 'unsigned char *') to 'DevMonIo *' (aka 'struct binder_devmon_ds_io *') increases required alignment from 1 to 8 [-Wcast-align]
+  why: G_CAST/THIS container-of casts on real objects (gutil_macros.h); only armv7 and clang warn
+x86_64-clang: src/binder_devmon_ds.c: implicit conversion from enumeration type 'enum radio_modem_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_devmon_if.c: cast from 'guint8 *' (aka 'unsigned char *') to 'DevMon *' (aka 'struct binder_devmon_if *') increases required alignment from 1 to 8 [-Wcast-align]
+  why: G_CAST/THIS container-of casts on real objects (gutil_macros.h); only armv7 and clang warn
+x86_64-clang: src/binder_devmon_if.c: cast from 'guint8 *' (aka 'unsigned char *') to 'DevMonIo *' (aka 'struct binder_devmon_if_io *') increases required alignment from 1 to 8 [-Wcast-align]
+  why: G_CAST/THIS container-of casts on real objects (gutil_macros.h); only armv7 and clang warn
+x86_64-clang: src/binder_devmon_if.c: implicit conversion from enumeration type 'enum radio_network_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_ims_reg.c: cast from 'guint8 *' (aka 'unsigned char *') to 'BinderImsRegObject *' (aka 'struct binder_ims_reg_object *') increases required alignment from 1 to 8 [-Wcast-align]
+  why: G_CAST/THIS container-of casts on real objects (gutil_macros.h); only armv7 and clang warn
+x86_64-clang: src/binder_ims_reg.c: implicit conversion from enumeration type 'enum radio_network_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_ims_reg.c: implicit conversion from enumeration type 'enum radio_network_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_logger.c: implicit conversion from enumeration type 'enum radio_ind' to different enumeration type 'RADIO_CONFIG_IND' (aka 'enum radio_config_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_logger.c: implicit conversion from enumeration type 'enum radio_req' to different enumeration type 'RADIO_CONFIG_REQ' (aka 'enum radio_config_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_logger.c: implicit conversion from enumeration type 'enum radio_resp' to different enumeration type 'RADIO_CONFIG_RESP' (aka 'enum radio_config_resp') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_logger.c: implicit conversion from enumeration type 'RADIO_CONFIG_IND' (aka 'enum radio_config_ind') to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_modem.c: cast from 'guint8 *' (aka 'unsigned char *') to 'BinderModemPriv *' (aka 'struct binder_modem_priv *') increases required alignment from 1 to 8 [-Wcast-align]
+  why: G_CAST/THIS container-of casts on real objects (gutil_macros.h); only armv7 and clang warn
+x86_64-clang: src/binder_modem.c: implicit conversion from enumeration type 'enum radio_network_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_netreg.c: implicit conversion from enumeration type 'enum ofono_operator_status' to different enumeration type 'RADIO_OP_STATUS' (aka 'enum radio_operator_status') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_netreg.c: implicit conversion from enumeration type 'enum radio_modem_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_netreg.c: implicit conversion from enumeration type 'enum radio_network_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_netreg.c: implicit conversion from enumeration type 'enum radio_network_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_network.c: cast from 'char *' to 'BinderNetworkDataProfile *' (aka 'struct binder_network_data_profile *') increases required alignment from 1 to 8 [-Wcast-align]
+  why: g_malloc() block laid out with G_ALIGN8
+x86_64-clang: src/binder_network.c: cast from 'guint8 *' (aka 'unsigned char *') to 'BinderNetworkObject *' (aka 'struct binder_network_object *') increases required alignment from 1 to 8 [-Wcast-align]
+  why: G_CAST/THIS container-of casts on real objects (gutil_macros.h); only armv7 and clang warn
+x86_64-clang: src/binder_network.c: implicit conversion from enumeration type 'enum radio_data_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_network.c: implicit conversion from enumeration type 'enum radio_modem_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_network.c: implicit conversion from enumeration type 'enum radio_network_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_network.c: implicit conversion from enumeration type 'enum radio_network_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_network.c: implicit conversion from enumeration type 'enum radio_pref_net_type_internal' to different enumeration type 'RADIO_PREF_NET_TYPE' (aka 'enum radio_pref_net_type') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_plugin.c: implicit conversion from enumeration type 'enum radio_modem_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_plugin.c: implicit conversion from enumeration type 'enum radio_modem_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_radio_caps.c: cast from 'guint8 *' (aka 'unsigned char *') to 'BinderRadioCapsObject *' (aka 'struct binder_radio_caps_object *') increases required alignment from 1 to 8 [-Wcast-align]
+  why: G_CAST/THIS container-of casts on real objects (gutil_macros.h); only armv7 and clang warn
+x86_64-clang: src/binder_radio_caps.c: implicit conversion from enumeration type 'enum radio_modem_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_radio_caps.c: implicit conversion from enumeration type 'enum radio_modem_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_radio.c: cast from 'guint8 *' (aka 'unsigned char *') to 'BinderRadioObject *' (aka 'struct binder_radio_object *') increases required alignment from 1 to 8 [-Wcast-align]
+  why: G_CAST/THIS container-of casts on real objects (gutil_macros.h); only armv7 and clang warn
+x86_64-clang: src/binder_radio.c: implicit conversion from enumeration type 'enum radio_modem_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_radio.c: implicit conversion from enumeration type 'enum radio_modem_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_sim_card.c: implicit conversion from enumeration type 'enum radio_sim_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_sim_card.c: implicit conversion from enumeration type 'enum radio_sim_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_sim.c: cast from 'const guint8 *' (aka 'const unsigned char *') to 'RADIO_REQ *' (aka 'enum radio_req *') increases required alignment from 1 to 4 [-Wcast-align]
+  why: offsetof() into a struct of RADIO_REQ fields, so aligned
+x86_64-clang: src/binder_sim.c: implicit conversion from enumeration type 'enum radio_network_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_sim.c: implicit conversion from enumeration type 'enum radio_sim_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_sim.c: implicit conversion from enumeration type 'enum radio_sim_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_sim_settings.c: cast from 'guint8 *' (aka 'unsigned char *') to 'BinderSimSettingsObject *' (aka 'struct binder_sim_settings_object *') increases required alignment from 1 to 8 [-Wcast-align]
+  why: G_CAST/THIS container-of casts on real objects (gutil_macros.h); only armv7 and clang warn
+x86_64-clang: src/binder_sms.c: implicit conversion from enumeration type 'enum radio_messaging_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_sms.c: implicit conversion from enumeration type 'enum radio_messaging_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_stk.c: implicit conversion from enumeration type 'enum radio_sim_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_stk.c: implicit conversion from enumeration type 'enum radio_sim_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_stk.c: implicit conversion from enumeration type 'enum radio_voice_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_ussd.c: implicit conversion from enumeration type 'enum radio_voice_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_ussd.c: implicit conversion from enumeration type 'enum radio_voice_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_util.c: implicit conversion from enumeration type 'enum radio_pref_net_type_internal' to different enumeration type 'RADIO_PREF_NET_TYPE' (aka 'enum radio_pref_net_type') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_voicecall.c: implicit conversion from enumeration type 'const RADIO_CALL_STATE' (aka 'const enum radio_call_state') to different enumeration type 'enum ofono_call_status' [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_voicecall.c: implicit conversion from enumeration type 'enum radio_network_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_voicecall.c: implicit conversion from enumeration type 'enum radio_network_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_voicecall.c: implicit conversion from enumeration type 'enum radio_voice_ind' to different enumeration type 'RADIO_IND' (aka 'enum radio_ind') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-clang: src/binder_voicecall.c: implicit conversion from enumeration type 'enum radio_voice_req' to different enumeration type 'RADIO_REQ' (aka 'enum radio_req') [-Wimplicit-enum-enum-cast]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_call_barring.c: implicit conversion from 'enum radio_network_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_call_barring.c: implicit conversion from 'enum radio_sim_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_call_forwarding.c: implicit conversion from 'enum radio_voice_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_call_settings.c: implicit conversion from 'enum radio_voice_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_call_volume.c: implicit conversion from 'enum radio_voice_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_cbs.c: implicit conversion from 'enum radio_messaging_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_cbs.c: implicit conversion from 'enum radio_messaging_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_cell_info.c: format not a string literal, argument types not checked [-Wformat-nonliteral]
+  why: binder_cell_info_int*_format(): every caller passes a literal format
+x86_64-gcc: src/binder_cell_info.c: implicit conversion from 'enum radio_network_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_cell_info.c: implicit conversion from 'enum radio_network_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_data.c: implicit conversion from 'enum radio_aidl_config_req' to 'enum radio_config_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_data.c: implicit conversion from 'enum radio_data_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_data.c: implicit conversion from 'enum radio_data_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_data.c: implicit conversion from 'enum radio_network_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_data.c: implicit conversion from 'RADIO_PDP_PROTOCOL_TYPE' {aka 'enum radio_pdp_protocol_type'} to 'enum ofono_gprs_proto' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_devinfo.c: implicit conversion from 'enum radio_modem_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_devmon_ds.c: implicit conversion from 'enum radio_modem_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_devmon_if.c: implicit conversion from 'enum radio_network_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_ims_reg.c: implicit conversion from 'enum radio_network_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_ims_reg.c: implicit conversion from 'enum radio_network_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_logger.c: implicit conversion from 'enum radio_ind' to 'RADIO_CONFIG_IND' {aka 'enum radio_config_ind'} [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_logger.c: implicit conversion from 'enum radio_req' to 'RADIO_CONFIG_REQ' {aka 'enum radio_config_req'} [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_logger.c: implicit conversion from 'enum radio_resp' to 'RADIO_CONFIG_RESP' {aka 'enum radio_config_resp'} [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_logger.c: implicit conversion from 'RADIO_CONFIG_IND' {aka 'enum radio_config_ind'} to 'RADIO_IND' {aka 'enum radio_ind'} [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_netreg.c: implicit conversion from 'enum ofono_operator_status' to 'RADIO_OP_STATUS' {aka 'enum radio_operator_status'} [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_netreg.c: implicit conversion from 'enum radio_modem_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_netreg.c: implicit conversion from 'enum radio_network_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_netreg.c: implicit conversion from 'enum radio_network_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_network.c: implicit conversion from 'enum radio_data_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_network.c: implicit conversion from 'enum radio_modem_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_network.c: implicit conversion from 'enum radio_network_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_network.c: implicit conversion from 'enum radio_network_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_network.c: implicit conversion from 'enum radio_pref_net_type_internal' to 'RADIO_PREF_NET_TYPE' {aka 'enum radio_pref_net_type'} [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_plugin.c: implicit conversion from 'enum radio_modem_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_plugin.c: implicit conversion from 'enum radio_modem_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_radio_caps.c: implicit conversion from 'enum radio_modem_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_radio_caps.c: implicit conversion from 'enum radio_modem_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_radio.c: implicit conversion from 'enum radio_modem_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_radio.c: implicit conversion from 'enum radio_modem_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_sim_card.c: implicit conversion from 'enum radio_sim_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_sim_card.c: implicit conversion from 'enum radio_sim_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_sim.c: implicit conversion from 'enum radio_network_req' to 'RADIO_REQ' {aka 'enum radio_req'} [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_sim.c: implicit conversion from 'enum radio_sim_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_sim.c: implicit conversion from 'enum radio_sim_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_sms.c: implicit conversion from 'enum radio_messaging_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_sms.c: implicit conversion from 'enum radio_messaging_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_stk.c: implicit conversion from 'enum radio_sim_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_stk.c: implicit conversion from 'enum radio_sim_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_stk.c: implicit conversion from 'enum radio_voice_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_ussd.c: implicit conversion from 'enum radio_voice_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_ussd.c: implicit conversion from 'enum radio_voice_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_util.c: implicit conversion from 'enum radio_pref_net_type_internal' to 'RADIO_PREF_NET_TYPE' {aka 'enum radio_pref_net_type'} [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_voicecall.c: implicit conversion from 'enum radio_network_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_voicecall.c: implicit conversion from 'enum radio_network_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_voicecall.c: implicit conversion from 'enum radio_voice_ind' to 'enum radio_ind' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_voicecall.c: implicit conversion from 'enum radio_voice_req' to 'enum radio_req' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts
+x86_64-gcc: src/binder_voicecall.c: implicit conversion from 'RADIO_CALL_STATE' {aka 'enum radio_call_state'} to 'enum ofono_call_status' [-Wenum-conversion]
+  why: AIDL per-interface request/indication codes (enum radio_*_req/ind) are stored in libgbinder-radio's generic RADIO_REQ/RADIO_IND/RADIO_CONFIG_*; the cross-API mappings (RADIO_CALL_STATE, RADIO_OP_STATUS, PDP protocol, pref net type) have identical layouts

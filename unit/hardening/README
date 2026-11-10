@@ -1,0 +1,67 @@
+Hardening harness
+=================
+
+Two scripts on top of the unit tests, for the checks "make test" alone
+doesn't do. Both work for a native build and for a cross build tested
+on the build host through a sysroot.
+
+run - runtime checkers
+----------------------
+
+    unit/hardening/run [-c compiler]... [asan|tsan|valgrind]...
+
+Rebuilds the plugin, the extension library and the unit tests from
+clean for each checker and runs "make test" with:
+
+  asan       AddressSanitizer + UndefinedBehaviorSanitizer, any report
+             is fatal, leaks included
+  tsan       ThreadSanitizer, with ASLR off as TSan needs
+  valgrind   memcheck; fails on any error or definite leak (the
+             "make -C unit valgrind" target only reports)
+
+Pass -c once per compiler to build the sanitizer runs with (GCC and
+Clang find different things). Logs go to unit/hardening/logs.
+
+Cross build, run on the build host through the sysroot's loader:
+
+    PKG_CONFIG_SYSROOT_DIR=$SYSROOT \
+    PKG_CONFIG_LIBDIR=$SYSROOT/usr/lib/pkgconfig:$SYSROOT/usr/share/pkgconfig \
+    TEST_RUNNER="$SYSROOT/usr/lib/ld-linux-x86-64.so.2 --library-path $SYSROOT/usr/lib" \
+    unit/hardening/run -c "x86_64-linux-gcc --sysroot=$SYSROOT" \
+        -c "clang --target=x86_64-linux-gnu --sysroot=$SYSROOT"
+
+The sysroot needs the sanitizer runtimes (libasan, libubsan, libtsan;
+compiler-rt for Clang). TEST_RUNNER is also honoured by the plain
+"make test", "make test-debug" and "make valgrind" targets in unit/.
+
+static-analysis - analyzers and warnings on every target
+--------------------------------------------------------
+
+    unit/hardening/static-analysis [-c name=compiler]... [-u]
+
+Runs gcc -fanalyzer (-O0 and -O2), clang --analyze with the alpha
+checkers, clang-tidy, cppcheck (exhaustive), flawfinder and sparse over
+src/ and lib/src/, and compiles everything with each -c compiler using
+-Wall -Wextra -Wshadow -Wformat=2 -Wcast-align -Wpointer-arith -Wvla.
+Build with GCC and Clang for each supported target: armv7 is 32-bit
+and catches what the 64-bit targets don't. A compiler command with
+--sysroot= gets pkg-config pointed at that sysroot.
+
+Findings are compared, without line numbers, with
+static-analysis.baseline, where every accepted finding carries the
+reason it was accepted. Anything new fails the run; baseline entries
+that went away are listed so they can be dropped. -u regenerates the
+baseline from the current run, keeping the reasons of the entries that
+are still there and marking the new ones "TODO" - review those, fix
+what's real and explain the rest before committing.
+
+The baseline was produced with GCC 15, Clang 21, cppcheck 2.19,
+flawfinder 2.0.19 and sparse 0.6.4 against Sailfish OS ofono headers;
+other versions report somewhat different sets.
+
+Adding tests
+------------
+
+New unit tests go in unit/unit_<name>/ like the existing ones, and in
+unit/Makefile and unit/coverage/run. A test for a fix should fail with
+the fix reverted; check that before relying on it.

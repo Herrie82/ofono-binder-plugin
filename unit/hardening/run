@@ -1,0 +1,111 @@
+#!/bin/bash
+#
+# Runs the unit tests under the runtime checkers:
+#
+#   asan       AddressSanitizer + UndefinedBehaviorSanitizer
+#   tsan       ThreadSanitizer (run with ASLR off, as TSan needs)
+#   valgrind   memcheck, failing on any error or definite leak
+#
+#   run [-c compiler]... [check]...
+#
+# With no checks given, all three run. Each -c adds a compiler to build
+# the sanitizer runs with (default: $CC or gcc), e.g. -c gcc -c clang.
+# Valgrind uses the first one, without instrumentation.
+#
+# Every run rebuilds the plugin, the extension library and the tests
+# from clean, with the checker's flags in CFLAGS/LDFLAGS. To test a
+# cross build on the build host, point TEST_RUNNER at the sysroot's
+# dynamic loader, e.g.
+#
+#   TEST_RUNNER="$SYSROOT/usr/lib/ld-linux-x86-64.so.2 \
+#       --library-path $SYSROOT/usr/lib" \
+#   CC="x86_64-linux-gcc --sysroot=$SYSROOT" unit/hardening/run
+#
+# (PKG_CONFIG_SYSROOT_DIR and PKG_CONFIG_LIBDIR pointing at the same
+# sysroot.) A compiler without the sanitizer runtime fails to link, and
+# that run is reported as failed, not skipped.
+#
+
+set -u
+
+COMPILERS=()
+CHECKS=()
+while [ $# -gt 0 ]; do
+    case "$1" in
+    -c) COMPILERS+=("$2"); shift 2;;
+    asan|tsan|valgrind) CHECKS+=("$1"); shift;;
+    *) echo "Usage: $0 [-c compiler]... [asan|tsan|valgrind]..." >&2; exit 2;;
+    esac
+done
+[ ${#COMPILERS[@]} -gt 0 ] || COMPILERS=("${CC:-gcc}")
+[ ${#CHECKS[@]} -gt 0 ] || CHECKS=(asan tsan valgrind)
+
+TOP_DIR=$(cd "$(dirname "$0")/../.." && pwd)
+LOG_DIR="$TOP_DIR/unit/hardening/logs"
+RUNNER=${TEST_RUNNER:-}
+ASAN_FLAGS="-fsanitize=address,undefined -fno-sanitize-recover=all -fno-omit-frame-pointer"
+TSAN_FLAGS="-fsanitize=thread"
+mkdir -p "$LOG_DIR"
+failed=()
+
+# The GLib callback casts (G_CALLBACK and friends) are what clang's
+# -fsanitize=function flags; they're fine on every ABI we run on.
+san_flags() {
+    case "$1" in *clang*) echo "$2 -fno-sanitize=function";; *) echo "$2";; esac
+}
+
+clean() {
+    make -C "$TOP_DIR" -s clean >/dev/null 2>&1
+    make -C "$TOP_DIR/lib" -s clean >/dev/null 2>&1
+    make -C "$TOP_DIR/unit" -s clean >/dev/null 2>&1
+}
+
+# Short name of a compiler command, for the log file name
+cc_name() {
+    local n
+    n=$(basename "${1%% *}")
+    echo "${n##*-}"
+}
+
+# name compiler cflags runner [env...]
+check() {
+    local name=$1 cc=$2 flags=$3 runner=$4 log="$LOG_DIR/$1.log"
+    shift 4
+    echo "== $name"
+    clean
+    if env "$@" make -k -C "$TOP_DIR/unit" -s CC="$cc" CFLAGS="$flags" \
+        LDFLAGS="$flags" TEST_RUNNER="$runner" test > "$log" 2>&1; then
+        echo "   ok ($(grep -c '^ok ' "$log") tests)"
+    else
+        grep -m5 -E "ERROR|runtime error|WARNING: ThreadSanitizer|definitely lost|not ok|error:|Error [0-9]" "$log" |
+            sed 's/^/   /'
+        echo "   FAILED, see $log"
+        failed+=("$name")
+    fi
+}
+
+for c in "${CHECKS[@]}"; do
+    case $c in
+    asan)
+        for cc in "${COMPILERS[@]}"; do
+            check "asan-$(cc_name "$cc")" "$cc" "$(san_flags "$cc" "$ASAN_FLAGS")" \
+                "$RUNNER" ASAN_OPTIONS=detect_leaks=1:abort_on_error=1
+        done;;
+    tsan)
+        for cc in "${COMPILERS[@]}"; do
+            check "tsan-$(cc_name "$cc")" "$cc" "$TSAN_FLAGS" \
+                "setarch $(uname -m) -R $RUNNER" TSAN_OPTIONS=halt_on_error=1
+        done;;
+    valgrind)
+        check valgrind "${COMPILERS[0]}" "-O1 -g" "valgrind -q \
+--error-exitcode=99 --leak-check=full --errors-for-leak-kinds=definite \
+--show-possibly-lost=no $RUNNER" G_DEBUG=gc-friendly G_SLICE=always-malloc;;
+    esac
+done
+
+clean
+if [ ${#failed[@]} -gt 0 ]; then
+    echo "*** FAILED:" "${failed[@]}"
+    exit 1
+fi
+echo "All checks passed"

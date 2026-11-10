@@ -61,6 +61,10 @@ FULL_LDFLAGS = $(BASE_FLAGS) $(LDFLAGS)
 LIBS = $(shell pkg-config --libs $(LINK_PKGS)) -lpthread
 QUIET_MAKE = make --no-print-directory
 
+# Prefix for running the test binaries, e.g. a sysroot's dynamic loader
+# when testing a cross build on the build host
+TEST_RUNNER ?=
+
 DEBUG_LDFLAGS = $(FULL_LDFLAGS)
 RELEASE_LDFLAGS = $(FULL_LDFLAGS)
 COVERAGE_LDFLAGS = $(FULL_LDFLAGS) --coverage
@@ -153,15 +157,15 @@ test-banner:
 	@echo "===========" $(EXE) "=========== "
 
 test-debug: test-banner debug
-	@$(DEBUG_EXE) $(TEST_OPTS)
+	@$(TEST_RUNNER) $(DEBUG_EXE) $(TEST_OPTS)
 
 test-release: test-banner release
-	@$(RELEASE_EXE) $(TEST_OPTS)
+	@$(TEST_RUNNER) $(RELEASE_EXE) $(TEST_OPTS)
 
 test: test-release
 
 valgrind: test-banner release
-	@G_DEBUG=gc-friendly G_SLICE=always-malloc valgrind --tool=memcheck --leak-check=full --show-possibly-lost=no $(RELEASE_EXE) $(TEST_OPTS)
+	@G_DEBUG=gc-friendly G_SLICE=always-malloc valgrind --tool=memcheck --leak-check=full --show-possibly-lost=no $(TEST_RUNNER) $(RELEASE_EXE) $(TEST_OPTS)
 
 $(DEBUG_BUILD_DIR):
 	mkdir -p $@
